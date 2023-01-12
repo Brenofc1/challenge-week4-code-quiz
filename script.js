@@ -28,24 +28,24 @@ function setTime() {
 //questions to be asked
 var questions = [
   {
-    prompt: "Which digital currency is the most well known cryptocurrency?\b (A) Cardano\n (B) Bitcoin\n (C) Dogecoin\n (D) Ethereum",
-    options: ["A", "B", "C", "D"],
-    answer: "B",
+    prompt: "Which digital currency is the most well known cryptocurrency?",
+    options: ["(A) Cardano", "(B) Bitcoin", "(C) Dogecoin", "(D) Ethereum"],
+    answer: "(B) Bitcoin",
   },
   {
-    prompt: "Who is considered to be The Father of Artificial Intelligence?\n (A) John John\n (B) John Bon Jovi\n (C) John McDonald\n (D) John McCarthy",
-    options: ["A", "B", "C", "D"],
-    answer: "D",
+    prompt: "Who is considered to be The Father of Artificial Intelligence?",
+    options: ["(A) John John", "(B) John Bon Jovi", "(C) John McDonald", "(D) John McCarthy"],
+    answer: "(D) John McCarthy",
   },
   {
-    prompt: "What term is used for a network security system that prevents unauthorized access to or from a private network?\n (A) Firewall\n (B) Anti-Virus\n (C) VPN\n (D) VPC",
-    options: ["A", "B", "C", "D"],
-    answer: "A",
+    prompt: "What term is used for a network security system that prevents unauthorized access to or from a private network?",
+    options: ["(A) Firewall", "(B) Anti-Virus", "(C) VPN", "(D) VPC"],
+    answer: "(A) Firewall",
   },
   {
-    prompt: "What is the name given to a network designed to allow communication within an organization?\n (A) Intranet\n (B) Internet\n (C) Infranet\n (D) Infonet",
-    options: ["A", "B", "C", "D"],
-    answer: "A",
+    prompt: "What is the name given to a network designed to allow communication within an organization?",
+    options: ["(A) Intranet", "(B) Internet", "(C) Infranet", "(D) Infonet"],
+    answer: "(A) Intranet",
   },
   {
     prompt: "The instructions and data are stored in the ___ so that the processor can directly fetch and execute them.\n (A) Control unit\n (B) Main memory\n (C) Permanent memory\n (D) CPU",
