@@ -1,5 +1,30 @@
+h1 {
+  font-family: Arial, sans-serif;
+  color: whitesmoke;
+  font-size: 40px ;
+  text-align: center;
+  background-color: black;
+}
+
 body {
     font-family: Arial, sans-serif;
+  }
+
+  .start-btn {
+    color: blue;
+    font-size: 50px;
+    border-radius: 5px;
+  
+  }
+
+  .start-btn {
+    transition-duration: 0.4s;
+  }
+  
+  .start-btn:hover {
+    background-color: yellow;
+    box-shadow: 0 5px 15px 0 yellowgreen;
+    color: red;
   }
   
   .quiz {
@@ -11,12 +36,90 @@ body {
   .timer {
     margin: 16px 0;
     font-size: 20px;
+    color: black;
+    font-weight: bold;
+  }
+
+  .time {
+    color: #f44336;
+    font-size: 20px;
   }
   
   .questions {
     margin: 16px 0;
+    font-size: 15px;
+    color: black;
+  }
+
+  p {
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    border-color: aqua;
+    background-color: ghostwhite;
+  }
+
+  .questions button {
+    border-radius: 5px;
+    border-color: gainsboro;
+    font-size: 20px;
+    color: #f44336;
+    margin: 5px;
+    width: 250px;
+    transition-duration: 0.4s;
+  }
+
+  .questions button:hover {
+    background-color: #4CAF50;
+    box-shadow: 0 5px 15px 0 yellowgreen;
+    color: white;
+  }
+
+  label {
+    font-size: 25px;
+    font-family: sans-serif ;
+    font-weight: bold;
+    color: maroon;
+  }
+
+  input {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .save-btn {
+    color: green;
+    border-radius: 5px;
+    justify-items: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .save-btn:hover {
+    border-radius: 5px;
+    background-color: #4CAF50;
+    box-shadow: 0 5px 15px 0 yellowgreen;
+    color: white;
+  }
+
+  
+  .questions {
+    color: #f44336;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: sans-serif;
   }
   
+  
+  .result {
+    color: #02722f;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: sans-serif;
+  }
+
   .question {
     margin: 16px 0;
     font-size: 18px;
@@ -71,5 +174,3 @@ body {
     border-radius: 4px;
     padding: 8px;
   }
-  
-  .save-
