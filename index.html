@@ -5,29 +5,32 @@
     <title>Code Quiz</title>
     <link rel="stylesheet" href="style.css">
   </head>
+  <header>
+    <h1>Boot Camp Quiz Challenge</h1>
+  </header>
   <body>
     <div class="quiz">
-      <button class="start-btn">Start Quiz</button>
-      <div class="timer">
-        Time remaining: <span class="time"></span>
-      </div>
-      <div class="questions">
-        <!-- Prompt and answer options will be added here -->
-      </div>
-      <div class="result">
-        <!-- Result message will be added here -->
-      </div>
-      <div class="score">
-        Score: <span class="score-value">0</span>
-      </div>
-      <div class="high-scores">
-        <!-- High scores will be added here -->
-      </div>
       <form class="initials">
         <label for="initials">Enter your initials:</label>
         <input type="text" id="initials" maxlength="3">
         <button class="save-btn">Save</button>
       </form>
+      <button class="start-btn">Start Quiz</button>
+      <div class="timer">
+        Quiz Time Remaining: <span class="time"></span>
+      </div>
+      <div class="questions">
+        <!-- Prompt and answer options will appear here -->
+      </div>
+      <div class="result">
+        <!-- Result message will appear here -->
+      </div>
+      <div class="score">
+        Current Score: <span class="score-value">0</span>
+      </div>
+      <div class="high-scores">
+        <!-- High scores will appear here -->
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
