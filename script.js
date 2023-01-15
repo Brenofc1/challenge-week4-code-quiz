@@ -8,24 +8,30 @@ var resultEl = document.querySelector(".result");
 
 // Selects element by id
 var mainEl = document.getElementById("main");
-var secondsLeft = 720;
+var secondsLeft = 0;
 var currentQuestionIndex = 0;
 var score = 0;
 
 function setTime() {
-  // Sets interval in variable
   var timerInterval = setInterval(function() {
     secondsLeft--;
     timeEl.textContent = secondsLeft;
 
-    if (secondsLeft === 0) {
-      // Stops execution of action at set interval
+    if (secondsLeft < 0) {
       clearInterval(timerInterval);
+      endQuiz();
     }
   }, 1000);
 }
 
-//questions to be asked
+/* End Quiz Function*/
+function endQuiz() {
+  mainEl.innerHTML = "";
+  resultEl.textContent = "Your final score is " + score;
+  initialsEl.style.display = "block";
+}
+
+//questions to be asked on the quiz
 var questions = [
   {
     prompt: "Which digital currency is the most well known cryptocurrency?",
@@ -48,41 +54,42 @@ var questions = [
     answer: "(A) Intranet",
   },
   {
-    prompt: "The instructions and data are stored in the ___ so that the processor can directly fetch and execute them.\n (A) Control unit\n (B) Main memory\n (C) Permanent memory\n (D) CPU",
-    options: ["A", "B", "C", "D"],
-    answer: "B",
+    prompt: "The instructions and data are stored in the ___ so that the processor can directly fetch and execute them.",
+    options: ["(A) Control unit", "(B) Main memory", "(C) Permanent memory", "(D) CPU"],
+    answer: "(B) Main memory",
   },
   {
-    prompt: "Which method can be used to find the length of a string?\n (A) getSize()\n (B) len()\n (C) length()\n (D) getLength()",
-    options: ["A", "B", "C", "D"],
-    answer: "C",
+    prompt: "Which method can be used to find the length of a string? ",
+    options: ["(A) getSize()", "(B) len()", "(C) length()", "(D) getLength()"],
+    answer: "(C) length()",
   },
   {
-    prompt: "Which method can be used to return a string in upper case letters?\n (A) touppercase()\n (B) tuc()()\n (C) toUpperCase()()\n (D) upperCase()",
-    options: ["A", "B", "C", "D"],
-    answer: "C",
+    prompt: "Which method can be used to return a string in upper case letters?",
+    options: ["(A) touppercase()", "(B) tuc()()", "(C) toUpperCase()()", "(D) upperCase()"],
+    answer: "(C) toUpperCase()()",
   },
   {
-    prompt: "Which operator can be used to compare two values?\n (A) ><\n (B) == \n (C) <>\n (D) =",
-    options: ["A", "B", "C", "D"],
-    answer: "B",
+    prompt: "Which operator can be used to compare two values?",
+    options: ["(A) ><", "(B) ==", "(C) <>", "(D) ="],
+    answer: "(B) ==",
   },
   {
-    prompt: "To declare an array in Java, define the variable type with:\n (A) []\n (B) {}\n (C) ()\n (D) ''",
-    options: ["A", "B", "C", "D"],
-    answer: "A",
+    prompt: "To declare an array in Java, define the variable type with:",
+    options: ["(A) [ ]", "(B) { }", "(C) ( )", "(D) ' ' "],
+    answer: "(A) [ ]",
   },
   {
-    prompt: "Which statement is used to stop a loop?\n (A) exit\n (B) return\n (C) stop\n (D) break",
-    options: ["A", "B", "C", "D"],
-    answer: "D",
+    prompt: "Which statement is used to stop a loop?",
+    options: ["(A) exit", "(B) return", "(C) stop", "(D) break"],
+    answer: "(D) break",
   },
   {
-    prompt: "Which method can be used to find the highest value of x and y?\n (A) Math.largest(x,y)\n (B) Math.maxNum(x,y)\n (C) Math.max(x,y)\n (D) Math.maximum(x,y)",
-    options: ["A", "B", "C", "D"],
-    answer: "C",
+    prompt: "Which method can be used to find the highest value of x and y?",
+    options: ["(A) Math.largest(x,y)", "(B) Math.maxNum(x,y)", "(C) Math.max(x,y)", "(D) Math.maximum(x,y)"],
+    answer: "(C) Math.max(x,y)",
   },
 ]
+
 
 // Displays next question
 function nextQuestion() {
@@ -90,7 +97,7 @@ function nextQuestion() {
     questionsEl.innerHTML = "";
   
     // If there are no more questions, end quiz
-    if (currentQuestionIndex === questions.length) {
+    if (currentQuestionIndex == questions.length) {
       endQuiz();
       return;
     }
@@ -108,12 +115,14 @@ function nextQuestion() {
       var optionBtn = document.createElement("button");
       optionBtn.textContent = option;
       optionBtn.addEventListener("click", function(event) {
-        // Check if option is correct
-        if (event.target.textContent === currentQuestion.answer) {
+        // Check if option is correct or incorrect
+        if (event.target.textContent == currentQuestion.answer) {
           score++;
           scoreEl.textContent = score;
+          secondsLeft += 15;
         } else {
-          secondsLeft -= 10;
+          secondsLeft -= 15;
+          alert("Incorrect. You lost 15 Seconds. The correct answer is: " + currentQuestion.answer);
         }
         currentQuestionIndex++;
         nextQuestion();
@@ -125,10 +134,13 @@ function nextQuestion() {
   // Ends quiz and displays score
   function endQuiz() {
     // Clears quiz content
-    questionsEl.innerHTML = "";
+    
+    questionsEl.innerHTML = "Game Over";
   
     // Displays final score
     resultEl.textContent = "Your final score is " + score;
+    saveHighScore();
+
   
     // Shows form to save initials and score
     initialsEl.classList.remove("hide");
@@ -153,7 +165,7 @@ function nextQuestion() {
     highScoresEl.innerHTML = "";
     highScores.forEach(function(score) {
       var li = document.createElement("li");
-      li.textContent = score.initials + " - " + score.score;
+      li.textContent = score.initials + " = " + score.score;
       highScoresEl.appendChild(li);
     });
   }
@@ -162,10 +174,15 @@ function nextQuestion() {
   document.querySelector(".start-btn").addEventListener("click", function(event) {
     setTime();
     nextQuestion();
+    secondsLeft += 60;
     event.target.classList.add("hide");
+    document.querySelector(".start-btn").style.display = "none";
+    
   });
   
   initialsEl.addEventListener("submit", function(event) {
     event.preventDefault();
-    saveHighScore();
+    document.querySelector(".initials").style.display = "none";
+    
   });
+  
