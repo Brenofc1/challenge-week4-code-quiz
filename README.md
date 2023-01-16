@@ -23,3 +23,5 @@ Web APIs: Code Quiz
 
 # For this code I used a simple html code which should pull the main information from script.com
 # The style was done using css style.
+
+![screen shot](./ScreenshotQuiz.JPG) 
